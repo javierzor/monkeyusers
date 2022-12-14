@@ -1,63 +1,238 @@
 
-<ion-content>
-  
+<ion-content padding class="signup-style">
+
+    <ion-buttons>
+      <ion-button (click)="goBack()">
+        <ion-icon style="font-size: 30px; " name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+<br>
+
+<section *ngIf="this.step=='login'">
+
   <ion-grid>
-    <ion-row>
-      <ion-col>
+		<ion-row>
+      <ion-col id="somelement" align-self-center size-md="6" size-lg="5" size-xs="12" size>
 
 
-      <ion-card *ngFor="let cadacarta of respuestamaltaadminobtenerlistadeuduarios" >
+            <ion-row class="row" class="ion-no-padding" no-padding >
+                <ion-col size="3">
+                </ion-col>
+                <ion-col size="6">
+                    <img src="../assets/monkey-login.png" class="img-logo">
+                </ion-col>
+                <ion-col size="3">
+                </ion-col>
+            </ion-row>
 
-        <img style="width:8vw;" src="assets/httpsbadmonkeyvapes.comclientapplogin.svg">
-        <img style="position:absolute;top:5%;right:3%; border-radius: 20px; width:4vw; background-color:black; padding:5px" src="assets/logo-transparent.png">
-      
-        <div style="position:absolute;top:5%;right:30%;">
-          <ion-text style="font-family: 'RocknRoll One', sans-serif; font-size: 3vw;">badmonkeyvapes.com</ion-text>
+
+        <ion-card style=" padding:10%;" style="background-color:rgba(215, 215, 215, 0.124);" >
+                
+
+
+            <ion-row class="row" class="ion-no-padding" no-padding >
+                <ion-col style="text-align: center;">
+                  <br>
+                  <br>
+                    <a><ion-text style="color:#f0b13b;"><h4><strong>Iniciar sesión</strong></h4></ion-text></a>
+                </ion-col>
+            </ion-row>
+            <ion-row class="row" class="ion-no-padding" no-padding >
+              <ion-col style="text-align: center;">
+                <br>
+                <a><ion-text style="color:#f0b13b;"><h6>¿Aún no tienes cuenta? <a style="cursor:pointer;" (click)="iraregistrarse()">Registrate</a></h6></ion-text></a>
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="2"></ion-col>
+            <ion-col size="8">
+              <ion-input style="border: 1px solid var(--ion-color-medium);" (ionChange)="CHANGEusuarioocorreo()"  (input)="CHANGEusuarioocorreo()" [(ngModel)]="loginuser" placeholder="Correo"></ion-input>
+              <ion-text *ngIf="loginuser&&!usuariologin_tienearrobas||colocouncorreoperonoelpunto" style="position:absolute; bottom:-1px; font-size:9px; color:red;">Ingrese un correo valido.</ion-text>
+            </ion-col>
+            <ion-col size="2"></ion-col>
+          </ion-row>
           
-        </div>
-      
-        <div style='text-align: center;'>
-          <img alt='Badmonkey' style="width:9vw;"
-               src='https://barcode.tec-it.com/barcode.ashx?data={{cadacarta.id_item}}%0A106001334567%0A106002564567%0A106003794567%0A106005024567%0A106006254567%0A106007484567%0A106008714567%0A106009944567&code=EAN13&multiplebarcodes=true'/>
-        </div>
+          <br>
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-input style="border: 1px solid var(--ion-color-medium);"  type="password" [(ngModel)]="loginpassword" placeholder="Contraseña"></ion-input>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3.5"></ion-col>
+              <ion-col size="5">
+                <ion-button style="  --border-radius: 1px;
+                border-radius: 1px;" [disabled]="!usuariologin_tienearrobas||colocouncorreoperonoelpunto||!loginuser||loginuser==''||!loginpassword||loginpassword==''" (click)="logear()" expand='block'>Ingresar</ion-button>
+              </ion-col>
+              <ion-col size="3.5"></ion-col>
+              </ion-row>
+              <br>
+              <br>
+              <br>
+              <ion-row style="text-align: center!important;">
+                <ion-col style="text-align: center!important;">
+                  <a href="https://badmonkeyvapes.com" target="_blank" style="cursor:pointer; text-decoration:underline;text-align: center!important;">Volver a badmonkey</a>
+                  <br>
+                </ion-col>
+              </ion-row>
+              <br>
+
+        </ion-card>
+
+
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+    
+</section>
+
+<section  *ngIf="step=='registro'">
+  <ion-grid>
+		<ion-row>
+      <ion-col id="somelement" align-self-center size-md="6" size-lg="5" size-xs="12">
+
+        <ion-row class="row" class="ion-no-padding" no-padding >
+          <ion-col size="3">
+          </ion-col>
+          <ion-col size="6">
+              <img src="../assets/monkey-login.png" class="img-logo">
+          </ion-col>
+          <ion-col size="3">
+          </ion-col>
+         </ion-row>
+          
         
-        <div>
-          <ion-text style="font-size:1vw; display: inline-block;
-          ">
-            Amazon.co.uk and certain of its affiliated websites. GC balances must be used within 10 years of the date of purchase. 
-            GCs cannot be transferred for value or redeemed for cash. GCs are issued by Amazon EU S.à.rl., 
-            a Luxembourg company. Amazon EU S.à.r.l. and its affiliates are not responsible if a GC is lost,
-             stolen, destroyed or used without permission. To redeem your GC, visit www.amazon.co.uk/redeemgift. 
-             For complete terms and conditions, see www.amazon.co.uk/gc-legal. O, ®, TM Amazon.com Inc. or its affiliates, 2015. 
-             No service fees.
+        <ion-card  style=" padding:10%;"  style="background-color:white;" > 
+          <br>
+        <ion-row>
+          <ion-col size="1">        </ion-col>
+          <ion-col size="10">  
+              <ion-input  style="border: 1px solid var(--ion-color-medium);"  [(ngModel)]="registercorreo" placeholder="E-mail"></ion-input>
+          </ion-col>
+          <ion-col size="1">        </ion-col>
+
+        </ion-row>
+          <br>
+
+
+                <ion-row>
+                  <ion-col size="5.7">
+                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  type="password" [(ngModel)]="registropassword" placeholder="Contraseña"></ion-input>
+                  </ion-col>
+                  <ion-col size="5.7">
+                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  type="password" [(ngModel)]="registropasswordrepetida" placeholder="Repetir Contraseña"></ion-input>
+                      <ion-text *ngIf="registropassword!=registropasswordrepetida" style="position:absolute; bottom:-1px; font-size:8px; color:red;">Contraseñas no coinciden.</ion-text>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="1">        </ion-col>
+                  <ion-col size="10">  
+                    <ion-item style="--background	:white; border: 1px solid var(--ion-color-medium);">
+                      <ion-label>Pais</ion-label>
+                      <ion-select interface="popover" (ionChange)="ONCHANGEPAIS($event)" >
+                        <ion-select-option  value="{{i}}" *ngFor="let c of countryData; let i = index;">{{c.name}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>  
+                  </ion-col>
+                  <ion-col size="1">        </ion-col>
+
+                </ion-row>
+
+
+                <ion-row>
+                  <ion-col size="5.7">
+                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
+                  </ion-col>
+                  <ion-col size="5.7">
+                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  [(ngModel)]="apellido" placeholder="Apellido"></ion-input>
+                  </ion-col>
+                </ion-row>
+
+
+                <ion-row class="ion-no-padding ion-justify-content-center ion-align-items-center" no-padding >
+                  <ion-col style="text-align: center;" size="1.7">
+                    <ion-text *ngIf="!paisdataseleccionado" style="font-size: 10; margin-top: 5px; margin-bottom: 5px;"><strong>+</strong></ion-text>
+                    <ion-text *ngIf="paisdataseleccionado" style="font-size: 10; margin-top: 5px; margin-bottom: 5px;">+{{paisdataseleccionado.code}}</ion-text>
+                  </ion-col>
+                  <ion-col size="10.3" class="ion-no-padding" no-padding >
+                      <ion-item style="--background	:white;" class="ion-no-padding" no-padding >
+                        <ion-input  style="border: 1px solid var(--ion-color-medium);"  [disabled]="!paisdataseleccionado" [(ngModel)]="celular" [placeholder]="paisdataseleccionado ? 'Nro Celular' : 'Seleccione pais'"></ion-input>
+                        <ion-text style="position:absolute; bottom:0px; right:1px; font-size:9px; color:rgba(0, 128, 0, 0.583);">Numero Celular Obligatorio.</ion-text>
+                      </ion-item>
+                  </ion-col>
+                </ion-row>
+
+
+                <ion-row>
+                  <ion-col>
+
+                    <ion-item  style="--background	:white;" >
+                      <ion-checkbox  (ionChange)="cambioterminos()" slot="start">
+                      </ion-checkbox>
+                      <ion-label>Términos y condiciones.</ion-label>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+
+
+                <ion-row>
+                  <ion-col size="3.5"></ion-col>
+                  <ion-col size="5">
+
+
+                    <ion-button style="--border-radius: 1px;
+                    border-radius: 1px;"
+                     [disabled]="
+                    registrandoseconarrobaenelusuario==true||
+                    registropassword!=registropasswordrepetida||
+                    aceptaterminos!=true||
+                    registercorreo==undefined||
+                    registercorreo==null||
+                    registercorreo==''||
+                    registropassword==undefined||
+                    registropassword==null||
+                    registropassword==''||
+                    registropasswordrepetida==undefined||
+                    registropasswordrepetida==null||
+                    registropasswordrepetida==''||
+                    paisdataseleccionado==undefined||
+                    paisdataseleccionado==null||
+                    paisdataseleccionado==''||
+                    nombre==''||
+                    nombre==undefined||
+                    nombre==null||
+                    apellido==''||
+                    apellido==undefined||
+                    apellido==null
         
-          </ion-text>
-        </div>
-      
-      
-      </ion-card>
-      
-      <br>
+                    " (click)="registrarsecorreo()" expand='block'>Registrarse</ion-button>
+
+
+                  </ion-col>
+                  <ion-col size="3.5"></ion-col>
+                  </ion-row>
+
+                <!-- <h6>Al registrarse, usted podra iniciar sección con su correo electronico o su nombre de usuario.</h6> -->
+
+
+                <ion-row class="row" class="ion-no-padding" no-padding >
+                  <ion-col style="text-align: center;">
+                    <br>
+                    <a><ion-text style="color:#f0b13b;"><h6><a style="cursor:pointer;" (click)="iralogin()">¿Tienes Cuenta? Ingresa Aqui!</a></h6></ion-text></a>
+                  </ion-col>
+              </ion-row>
+    
+
+
+    </ion-card>
 
     </ion-col>
   </ion-row>
+  </ion-grid>
 
-</ion-grid>
-
-
-<!-- <div  *ngFor="let cadacarta of respuestamaltaadminobtenerlistadeuduarios">
-  <img>
-  
-  <svg class="barcode"
-    jsbarcode-format="upc"
-    jsbarcode-value="123456789012"
-    jsbarcode-textmargin="0"
-    jsbarcode-fontoptions="bold">
-  </svg>
-
-</div> -->
-
-
-</ion-content>
-
-
+</section>
