@@ -1,0 +1,7 @@
+{
+  "name": "monkeyusers",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

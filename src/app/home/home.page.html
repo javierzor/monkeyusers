@@ -1,0 +1,63 @@
+
+<ion-content>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+
+      <ion-card *ngFor="let cadacarta of respuestamaltaadminobtenerlistadeuduarios" >
+
+        <img style="width:8vw;" src="assets/httpsbadmonkeyvapes.comclientapplogin.svg">
+        <img style="position:absolute;top:5%;right:3%; border-radius: 20px; width:4vw; background-color:black; padding:5px" src="assets/logo-transparent.png">
+      
+        <div style="position:absolute;top:5%;right:30%;">
+          <ion-text style="font-family: 'RocknRoll One', sans-serif; font-size: 3vw;">badmonkeyvapes.com</ion-text>
+          
+        </div>
+      
+        <div style='text-align: center;'>
+          <img alt='Badmonkey' style="width:9vw;"
+               src='https://barcode.tec-it.com/barcode.ashx?data={{cadacarta.id_item}}%0A106001334567%0A106002564567%0A106003794567%0A106005024567%0A106006254567%0A106007484567%0A106008714567%0A106009944567&code=EAN13&multiplebarcodes=true'/>
+        </div>
+        
+        <div>
+          <ion-text style="font-size:1vw; display: inline-block;
+          ">
+            Amazon.co.uk and certain of its affiliated websites. GC balances must be used within 10 years of the date of purchase. 
+            GCs cannot be transferred for value or redeemed for cash. GCs are issued by Amazon EU S.à.rl., 
+            a Luxembourg company. Amazon EU S.à.r.l. and its affiliates are not responsible if a GC is lost,
+             stolen, destroyed or used without permission. To redeem your GC, visit www.amazon.co.uk/redeemgift. 
+             For complete terms and conditions, see www.amazon.co.uk/gc-legal. O, ®, TM Amazon.com Inc. or its affiliates, 2015. 
+             No service fees.
+        
+          </ion-text>
+        </div>
+      
+      
+      </ion-card>
+      
+      <br>
+
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
+<!-- <div  *ngFor="let cadacarta of respuestamaltaadminobtenerlistadeuduarios">
+  <img>
+  
+  <svg class="barcode"
+    jsbarcode-format="upc"
+    jsbarcode-value="123456789012"
+    jsbarcode-textmargin="0"
+    jsbarcode-fontoptions="bold">
+  </svg>
+
+</div> -->
+
+
+</ion-content>
+
+
