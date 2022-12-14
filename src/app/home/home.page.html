@@ -106,7 +106,7 @@
          </ion-row>
           
         
-        <ion-card  style=" padding:10%;"  style="background-color:white;" > 
+        <ion-card  style=" padding:10%;"   style="background-color:rgba(168, 168, 168, 0.09);"> 
           <br>
         <ion-row>
           <ion-col size="1">        </ion-col>
@@ -132,7 +132,7 @@
                 <ion-row>
                   <ion-col size="1">        </ion-col>
                   <ion-col size="10">  
-                    <ion-item style="--background	:white; border: 1px solid var(--ion-color-medium);">
+                    <ion-item style="--background	:rgba(168, 168, 168, 0.09);; border: 1px solid var(--ion-color-medium);">
                       <ion-label>Pais</ion-label>
                       <ion-select interface="popover" (ionChange)="ONCHANGEPAIS($event)" >
                         <ion-select-option  value="{{i}}" *ngFor="let c of countryData; let i = index;">{{c.name}}</ion-select-option>
@@ -160,7 +160,7 @@
                     <ion-text *ngIf="paisdataseleccionado" style="font-size: 10; margin-top: 5px; margin-bottom: 5px;">+{{paisdataseleccionado.code}}</ion-text>
                   </ion-col>
                   <ion-col size="10.3" class="ion-no-padding" no-padding >
-                      <ion-item style="--background	:white;" class="ion-no-padding" no-padding >
+                      <ion-item style="--background	:rgba(168, 168, 168, 0.09);;" class="ion-no-padding" no-padding >
                         <ion-input  style="border: 1px solid var(--ion-color-medium);"  [disabled]="!paisdataseleccionado" [(ngModel)]="celular" [placeholder]="paisdataseleccionado ? 'Nro Celular' : 'Seleccione pais'"></ion-input>
                         <ion-text style="position:absolute; bottom:0px; right:1px; font-size:9px; color:rgba(0, 128, 0, 0.583);">Numero Celular Obligatorio.</ion-text>
                       </ion-item>
@@ -171,7 +171,7 @@
                 <ion-row>
                   <ion-col>
 
-                    <ion-item  style="--background	:white;" >
+                    <ion-item  style="--background	:rgba(168, 168, 168, 0.09);;" >
                       <ion-checkbox  (ionChange)="cambioterminos()" slot="start">
                       </ion-checkbox>
                       <ion-label>Términos y condiciones.</ion-label>
