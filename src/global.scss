@@ -24,3 +24,43 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-button {
+    text-transform: none;
+    --border-radius: 2.5px!important;
+    font-weight: 800;  
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+  :root {
+    font-size:8vw;
+    --ion-font-family: 'Poppins', sans-serif;
+    
+    /** primary **/
+    }
+  
+
+    ion-alert {
+      //background color
+      .alert-wrapper.sc-ion-alert-md {
+        background-color: #f8f4aa;
+
+
+      }
+    
+      // Header Text
+      .alert-title.sc-ion-alert-md {
+        font-size: 25px;
+        font-weight: 600;
+        font-family: "AustralisProSwash-Italic";
+        color: var(--ion-text-color, #00000080);
+      }
+    }
+
+    ion-select {
+      --placeholder-color	:#ffbc0488;
+      color:#fbb000!important;
+    }
+    

@@ -20,73 +20,70 @@
                 <ion-col size="3">
                 </ion-col>
                 <ion-col size="6">
-                    <img src="../assets/monkey-login.png" class="img-logo">
+                    <img src="../assets/logo2-transparent.png" class="img-logo">
                 </ion-col>
                 <ion-col size="3">
                 </ion-col>
             </ion-row>
 
 
-        <ion-card style=" padding:10%;" style="background-color:rgba(215, 215, 215, 0.124);" >
+        <ion-card style=" padding:10%;" color="none" >
                 
 
+          <ion-item class="ion-align-items-center">
+            <ion-label color="primary" position="floating">badmonkeyvapes@gmail.com</ion-label>
+            <ion-input [(ngModel)]="loginuser" placeholder="badmonkeyvapes@gmail.com" style="color:#efb23f"></ion-input>
+            <ion-icon style="font-size:large;" color="primary" name="person-outline" slot="start"></ion-icon>
+          </ion-item>
 
-            <ion-row class="row" class="ion-no-padding" no-padding >
-                <ion-col style="text-align: center;">
-                  <br>
-                  <br>
-                    <a><ion-text style="color:#f0b13b;"><h4><strong>Iniciar sesión</strong></h4></ion-text></a>
-                </ion-col>
-            </ion-row>
-            <ion-row class="row" class="ion-no-padding" no-padding >
-              <ion-col style="text-align: center;">
-                <br>
-                <a><ion-text style="color:#f0b13b;"><h6>¿Aún no tienes cuenta? <a style="cursor:pointer;" (click)="iraregistrarse()">Registrate</a></h6></ion-text></a>
-              </ion-col>
-          </ion-row>
+          <ion-item class="ion-align-items-center">
+            <ion-label color="primary" position="floating">Contraseña:</ion-label>
+            <ion-input [(ngModel)]="loginpassword" placeholder="Contraseña" style="color:#efb23f" type="password"></ion-input>
+            <ion-icon style="font-size:large;" color="primary" name="lock-closed-outline" slot="start"></ion-icon>
+          </ion-item>
 
-          <ion-row>
-            <ion-col size="2"></ion-col>
-            <ion-col size="8">
-              <ion-input style="border: 1px solid var(--ion-color-medium);" (ionChange)="CHANGEusuarioocorreo()"  (input)="CHANGEusuarioocorreo()" [(ngModel)]="loginuser" placeholder="Correo"></ion-input>
-              <ion-text *ngIf="loginuser&&!usuariologin_tienearrobas||colocouncorreoperonoelpunto" style="position:absolute; bottom:-1px; font-size:9px; color:red;">Ingrese un correo valido.</ion-text>
+
+          <ion-row  class="ion-align-items-center">
+            <ion-col size="7">
+                <ion-item color="none" lines="none" class="ion-no-padding" no-padding>
+                  <ion-checkbox style="--background: #fbb000"></ion-checkbox>&nbsp;&nbsp;<span style="color:#efb23f">Recordar</span>
+                  
+                </ion-item>
             </ion-col>
-            <ion-col size="2"></ion-col>
+            <ion-col size="5">
+              <ion-button color="secondary"   (click)="logear()" expand="block">Ingresar</ion-button>
+            </ion-col>
           </ion-row>
-          
-          <br>
-            <ion-row>
-              <ion-col size="2"></ion-col>
-              <ion-col size="8">
-                <ion-input style="border: 1px solid var(--ion-color-medium);"  type="password" [(ngModel)]="loginpassword" placeholder="Contraseña"></ion-input>
-              </ion-col>
-              <ion-col size="2"></ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col size="3.5"></ion-col>
-              <ion-col size="5">
-                <ion-button style="  --border-radius: 1px;
-                border-radius: 1px;" [disabled]="!usuariologin_tienearrobas||colocouncorreoperonoelpunto||!loginuser||loginuser==''||!loginpassword||loginpassword==''" (click)="logear()" expand='block'>Ingresar</ion-button>
-              </ion-col>
-              <ion-col size="3.5"></ion-col>
-              </ion-row>
+
+
               <br>
               <br>
               <br>
-              <ion-row style="text-align: center!important;">
-                <ion-col style="text-align: center!important;">
-                  <a href="https://badmonkeyvapes.com" target="_blank" style="cursor:pointer; text-decoration:underline;text-align: center!important;">Volver a badmonkey</a>
-                  <br>
-                </ion-col>
-              </ion-row>
+
               <br>
 
         </ion-card>
+
+        <ion-row  style="width:100%;position:absolute; bottom: 0%;z-index: 1111;" class="ion-no-padding" no-padding >
+          <ion-col size="1"></ion-col>
+          <ion-col size="5" style="text-align: left;">
+            <a><ion-text style="color:#efb23f;"><h6>¿Aún no tienes cuenta? <a style="cursor:pointer;" (click)="iraregistrarse()">Registrate</a></h6></ion-text></a>
+          </ion-col>
+          <ion-col size="5" style="text-align: right;">
+            <a><ion-text style="color:#efb23f;"><h6><a style="cursor:pointer;" (click)="iraregistrarse()">Olvide mi contraseña</a></h6></ion-text></a>
+          </ion-col>
+          <ion-col size="1"></ion-col>
+
+        </ion-row>
 
 
   </ion-col>
   </ion-row>
   </ion-grid>
+
+
+
+
     
 </section>
 
@@ -106,12 +103,12 @@
          </ion-row>
           
         
-        <ion-card  style=" padding:10%;"   style="background-color:rgba(168, 168, 168, 0.09);"> 
+        <ion-card  style=" padding:10%;"  color="none"> 
           <br>
         <ion-row>
           <ion-col size="1">        </ion-col>
           <ion-col size="10">  
-              <ion-input  style="border: 1px solid var(--ion-color-medium);"  [(ngModel)]="registercorreo" placeholder="E-mail"></ion-input>
+              <ion-input  style="color:#efb23f; border: 1px solid var(--ion-color-primary);"  [(ngModel)]="registercorreo" placeholder="E-mail"></ion-input>
           </ion-col>
           <ion-col size="1">        </ion-col>
 
@@ -121,48 +118,44 @@
 
                 <ion-row>
                   <ion-col size="5.7">
-                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  type="password" [(ngModel)]="registropassword" placeholder="Contraseña"></ion-input>
+                      <ion-input  style="color:#efb23f; border: 1px solid var(--ion-color-primary);"  type="password" [(ngModel)]="registropassword" placeholder="Contraseña"></ion-input>
                   </ion-col>
                   <ion-col size="5.7">
-                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  type="password" [(ngModel)]="registropasswordrepetida" placeholder="Repetir Contraseña"></ion-input>
-                      <ion-text *ngIf="registropassword!=registropasswordrepetida" style="position:absolute; bottom:-1px; font-size:8px; color:red;">Contraseñas no coinciden.</ion-text>
+                      <ion-input  style="color:#efb23f; border: 1px solid var(--ion-color-primary);"  type="password" [(ngModel)]="registropasswordrepetida" placeholder="Repetir Contraseña"></ion-input>
+                      <ion-text *ngIf="registropassword!=registropasswordrepetida" style="position:absolute; bottom:-7px; font-size:8px; color:red;">Contraseñas no coinciden.</ion-text>
                   </ion-col>
                 </ion-row>
 
                 <ion-row>
-                  <ion-col size="1">        </ion-col>
-                  <ion-col size="10">  
-                    <ion-item style="--background	:rgba(168, 168, 168, 0.09);; border: 1px solid var(--ion-color-medium);">
-                      <ion-label>Pais</ion-label>
-                      <ion-select interface="popover" (ionChange)="ONCHANGEPAIS($event)" >
-                        <ion-select-option  value="{{i}}" *ngFor="let c of countryData; let i = index;">{{c.name}}</ion-select-option>
-                      </ion-select>
-                    </ion-item>  
-                  </ion-col>
-                  <ion-col size="1">        </ion-col>
+                  <ion-col size="12"> 
+ 
+                      <ion-select  placeholder="Seleccione su País" (ionChange)="ONCHANGEPAIS($event)" >
+                        <ion-select-option style="color:#efb23f; " value="{{i}}" *ngFor="let c of countryData; let i = index;">{{c.name}}</ion-select-option>
+                </ion-select>
+                </ion-col>
 
                 </ion-row>
 
 
                 <ion-row>
                   <ion-col size="5.7">
-                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
+                      <ion-input  style="color:#efb23f; border: 1px solid var(--ion-color-primary);"  [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
                   </ion-col>
                   <ion-col size="5.7">
-                      <ion-input  style="border: 1px solid var(--ion-color-medium);"  [(ngModel)]="apellido" placeholder="Apellido"></ion-input>
+                      <ion-input  style="color:#efb23f; border: 1px solid var(--ion-color-primary);"  [(ngModel)]="apellido" placeholder="Apellido"></ion-input>
                   </ion-col>
                 </ion-row>
 
 
                 <ion-row class="ion-no-padding ion-justify-content-center ion-align-items-center" no-padding >
                   <ion-col style="text-align: center;" size="1.7">
-                    <ion-text *ngIf="!paisdataseleccionado" style="font-size: 10; margin-top: 5px; margin-bottom: 5px;"><strong>+</strong></ion-text>
-                    <ion-text *ngIf="paisdataseleccionado" style="font-size: 10; margin-top: 5px; margin-bottom: 5px;">+{{paisdataseleccionado.code}}</ion-text>
+                    <ion-text *ngIf="!paisdataseleccionado" style="font-size: 10; margin-top: 5px; margin-bottom: 5px;"><strong style="color:#efb23f;">+</strong></ion-text>
+                    <ion-text *ngIf="paisdataseleccionado" style="color:#efb23f; font-size: 10; margin-top: 5px; margin-bottom: 5px;">+{{paisdataseleccionado.code}}</ion-text>
                   </ion-col>
                   <ion-col size="10.3" class="ion-no-padding" no-padding >
-                      <ion-item style="--background	:rgba(168, 168, 168, 0.09);;" class="ion-no-padding" no-padding >
-                        <ion-input  style="border: 1px solid var(--ion-color-medium);"  [disabled]="!paisdataseleccionado" [(ngModel)]="celular" [placeholder]="paisdataseleccionado ? 'Nro Celular' : 'Seleccione pais'"></ion-input>
-                        <ion-text style="position:absolute; bottom:0px; right:1px; font-size:9px; color:rgba(0, 128, 0, 0.583);">Numero Celular Obligatorio.</ion-text>
+                      <ion-item color="none" class="ion-no-padding" no-padding >
+                        <ion-input  style="color:#efb23f; border: 1px solid var(--ion-color-primary);"  [disabled]="!paisdataseleccionado" [(ngModel)]="celular" [placeholder]="paisdataseleccionado ? 'Nro Celular' : 'Seleccione pais'"></ion-input>
+                        <ion-text style="position:absolute; z-index:1111; bottom:4px; right:1px; font-size:9px; color:rgba(0, 128, 0, 0.583);">Numero Celular Obligatorio.</ion-text>
                       </ion-item>
                   </ion-col>
                 </ion-row>
@@ -171,10 +164,10 @@
                 <ion-row>
                   <ion-col>
 
-                    <ion-item  style="--background	:rgba(168, 168, 168, 0.09);;" >
-                      <ion-checkbox  (ionChange)="cambioterminos()" slot="start">
+                    <ion-item color="none">
+                      <ion-checkbox style="--background: #fbb000" [(ngModel)]="aceptaterminos" (ionChange)="cambioterminos()" slot="start">
                       </ion-checkbox>
-                      <ion-label>Términos y condiciones.</ion-label>
+                      <ion-label color="primary">Términos y condiciones.</ion-label>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -208,7 +201,8 @@
                     nombre==null||
                     apellido==''||
                     apellido==undefined||
-                    apellido==null
+                    apellido==null||
+                    !celular
         
                     " (click)="registrarsecorreo()" expand='block'>Registrarse</ion-button>
 
@@ -223,7 +217,7 @@
                 <ion-row class="row" class="ion-no-padding" no-padding >
                   <ion-col style="text-align: center;">
                     <br>
-                    <a><ion-text style="color:#f0b13b;"><h6><a style="cursor:pointer;" (click)="iralogin()">¿Tienes Cuenta? Ingresa Aqui!</a></h6></ion-text></a>
+                    <a><ion-text style="color:#efb23f;"><h6><a style="cursor:pointer;" (click)="iralogin()">¿Tienes Cuenta? Ingresa Aqui!</a></h6></ion-text></a>
                   </ion-col>
               </ion-row>
     
@@ -231,8 +225,23 @@
 
     </ion-card>
 
+
+
+
+
+
     </ion-col>
   </ion-row>
   </ion-grid>
 
+
+
+
+
 </section>
+
+
+
+
+
+</ion-content>

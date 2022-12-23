@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController, ModalController } from "@ionic/angular";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 export class VariosService {
+  secretKey = "123456&Descryption";
 
   isLoading = false;
   tipo_cuenta:any;
@@ -18,6 +20,7 @@ export class VariosService {
   activar_real_time_modal_ver_conversacion_chat: boolean = false;
 
   ir_a_registro: string='registro';
+  profileInfo: any;
   constructor(
     public toastController: ToastController,
     private loadingController: LoadingController,
@@ -93,6 +96,21 @@ export class VariosService {
       });
   }
   
+  funciondeRETRASAR(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
+
+
+encrypt(value : string) : string{
+  return CryptoJS.AES.encrypt(value, this.secretKey.trim()).toString();
+}
+
+decrypt(textToDecrypt : string){
+  return CryptoJS.AES.decrypt(textToDecrypt, this.secretKey.trim()).toString(CryptoJS.enc.Utf8);
+}
+
+
 
 
 }

@@ -3,6 +3,16 @@
   //   background-size: cover;
   //       --background: url(../../assets/login-fondo.jpg) 0 0/100% 100% no-repeat;
   // }
+  * {
+    font-size: 1.7vh;
+  }
+  
+  :root {
+    font-size: 1.7vh;
+  }
+
+
+
 
   ion-item {
     --border-color: white; // default underline color
@@ -16,3 +26,10 @@
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%)
     }
+
+
+    ion-item {
+  --border-color: var(--ion-color-secondary, #fbb000);
+}
+
+

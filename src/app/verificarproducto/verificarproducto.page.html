@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Verificar Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+
+  <section *ngIf="this.step=='1'">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col id="somelement" align-self-center size-md="6" size-lg="5" size-xs="12" size>
+        <ion-button (click)="irainicio()"><ion-icon color="dark" name="chevron-back"></ion-icon>
+        </ion-button>
+  
+ 
+        <ion-item class="ion-align-items-center" style="color:#efb23f; border: 1px solid var(--ion-color-primary);" >
+          <ion-label color="primary" position="floating">Codigo:</ion-label>
+          <ion-input [(ngModel)]="codigo" placeholder="badmonkeyvapes@gmail.com" style="color:#efb23f"></ion-input>
+          <ion-icon style="font-size:large;" color="primary" name="person-outline" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-button (click)="verificarproducto()" expand="full">OK</ion-button>
+
+        <ion-button (click)="escanearQRDeTrakig('0')"><ion-icon size="large" color="dark" color="dark" name="scan"></ion-icon>
+        </ion-button>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </section>
+
+
+
+  <section *ngIf="this.step=='2'">
+    <section *ngIf="!escaneoesarray"> 
+      <ion-card style="position:absolute;top:2vh;z-index:1111;">
+        <ion-fab-button  size="small" (click)="this.step='1'" color="primary"><ion-icon name="close"></ion-icon></ion-fab-button>
+        <section *ngIf="camaras">
+          <ion-button *ngFor="let cadacamara of this.camaras; let i=index;" (click)="escanearQRDeTrakig(i)">{{i+1}}</ion-button>
+        </section>
+      </ion-card>
+      <ion-card>
+        <div id="reader" width="100vw" height="100vh"></div>
+      </ion-card>
+    </section>
+    <section  *ngIf="!escaneoesarray">
+      <ion-item *ngFor="let key of llavesdelescaneo">
+        <ion-label>{{key}} - {{objetoprincipal[key]}}</ion-label>
+      </ion-item>
+    </section>
+
+</section>
+
+
+  <!-- <section *ngIf="this.step=='2'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" offset="4">
+          <ion-button (click)="this.step='1'"><ion-icon color="dark" name="close"></ion-icon></ion-button>
+          
+            <div id="reader" width="600px"></div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section> -->
+
+
+</ion-content>

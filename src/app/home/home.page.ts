@@ -3,7 +3,7 @@ import * as CryptoJS from 'crypto-js';
 import { VariosService } from '../service/varios.service';
 import { PaisesService } from '../service/paises.service';
 import {Router} from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -65,6 +65,8 @@ export class HomePage  implements OnInit{
      this.countryData=this.paises.countryData;    
      this.comprobarSiFueReferido();
   }
+
+
 
   comprobarSiFueReferido(){
     this.route.params.subscribe(params => {
@@ -135,7 +137,7 @@ export class HomePage  implements OnInit{
 
             //el usuario coloco un correo valido con arroba y punto
             var dataoptimaconsultaruser = {
-              nombre_solicitud:'beoboxappinicio',
+              nombre_solicitud:'monkeyusersinicio',
               username: this.loginuser,
               password: this.loginpassword
             }
@@ -150,9 +152,19 @@ export class HomePage  implements OnInit{
                       this.variosservicios.tipo_cuenta=res.tipo_cuenta;
                       localStorage.setItem('email', this.encrypt(res.email));
                       localStorage.setItem('username', this.encrypt(res.username));
-                      this.router.navigate(['home']);
+                      // this.router.navigate(['home']);
                       localStorage.setItem('profileInfo', this.encrypt(JSON.stringify(res)));
                       // this.menu.enable(true);
+
+                      if(res.tipo_cuenta=='0')
+                      {
+                        this.router.navigate(['confirmesucorreo']);
+                      }
+                      if(res.tipo_cuenta=='1')
+                      {
+                        this.router.navigate(['inicio']);
+                      }
+
                     }
                     else{
                       this.variosservicios.quitarloading();
@@ -167,7 +179,7 @@ export class HomePage  implements OnInit{
           }
           else{
             this.colocouncorreoperonoelpunto=false;
-            this.variosservicios.presentToast("..::Ingrese un correo valido.::..");
+            this.variosservicios.presentToast("Porfavor ingrese un correo valido!");
           }
 
    }
@@ -175,7 +187,7 @@ export class HomePage  implements OnInit{
    else {
       this.colocouncorreoperonoelpunto=false;
       console.log('Cadena de texto SIN ARROBAS!.');
-
+      this.variosservicios.presentToast("Porfavor ingrese un correo valido!");
 
    }
 
@@ -194,7 +206,7 @@ export class HomePage  implements OnInit{
   async  registrarsecorreo(){
       var databeoboxcreateuser = {
         create_date: new Date(),
-        nombre_solicitud:'beoboxcreateuser',
+        nombre_solicitud:'monkeyuserscreateuser',
         username:this.registercorreo,
         password:this.registropassword,
         tipo_cuenta:'0',
@@ -217,9 +229,16 @@ export class HomePage  implements OnInit{
         this.variosservicios.tipo_cuenta=res.tipo_cuenta;
         localStorage.setItem('email', this.encrypt(res.email));
         localStorage.setItem('username', this.encrypt(res.username));
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
         localStorage.setItem('profileInfo', this.encrypt(JSON.stringify(res)));
-        this.router.navigate(['home']);
+        if(res.tipo_cuenta=='0')
+        {
+          this.router.navigate(['confirmesucorreo']);
+        }
+        if(res.tipo_cuenta=='1')
+        {
+          this.router.navigate(['inicio']);
+        }
       }
      },
      error=>{
