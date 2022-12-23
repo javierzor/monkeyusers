@@ -20,5 +20,12 @@ export class CanjearPage implements OnInit {
     this.router.navigate(['/inicio']);
   }
 
+  cerrarsesion(){
+    localStorage.clear();
+    this.router.navigate(['/home']);
+
+  }
+
+
 
 }
