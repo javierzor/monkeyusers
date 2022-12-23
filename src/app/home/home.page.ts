@@ -197,15 +197,18 @@ export class HomePage  implements OnInit{
 
 
     ONCHANGEPAIS(event){
-      console.log('index', event.target.value);
-      this.paisdataseleccionado= this.countryData[event.target.value];
-      console.log('paisData',this.paisdataseleccionado);
+      if(event.target.value){
+        console.log('index', event.target.value);
+        this.paisdataseleccionado= this.countryData[event.target.value];
+        console.log('paisData',this.paisdataseleccionado);
+      }
     }
     
 
   async  registrarsecorreo(){
+    var date = new Date();
       var databeoboxcreateuser = {
-        create_date: new Date(),
+        create_date: date,
         nombre_solicitud:'monkeyuserscreateuser',
         username:this.registercorreo,
         password:this.registropassword,
@@ -254,13 +257,17 @@ export class HomePage  implements OnInit{
     }
   
 
-  encrypt(value : string) : string{
-    return CryptoJS.AES.encrypt(value, this.secretKey.trim()).toString();
-  }
-
-  decrypt(textToDecrypt : string){
-    return CryptoJS.AES.decrypt(textToDecrypt, this.secretKey.trim()).toString(CryptoJS.enc.Utf8);
-  }
+    encrypt(value : string) : string{
+      if(value){
+        return CryptoJS.AES.encrypt(value, this.secretKey.trim()).toString();
+      }
+    }
+  
+    decrypt(textToDecrypt : string){
+      if(textToDecrypt){
+        return CryptoJS.AES.decrypt(textToDecrypt, this.secretKey.trim()).toString(CryptoJS.enc.Utf8);
+      }
+    }
 
   iralogin(){
     this.variosservicios.loading2segundos("Porfavor Espere");
