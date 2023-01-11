@@ -78,3 +78,31 @@ ion-alert.cerrarsalir-alert {
   border: 0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)
 }
 // termina alerta cerrarsalir
+
+
+//loadingdelmono
+.loading-del-mono {
+  ion-backdrop {
+    background-color: black;
+    opacity: .4 !important;
+  }
+
+  ion-spinner {
+    transform: scale(3);
+  }
+}
+
+ ion-loading.loading-del-mono {
+  .loading-wrapper {
+    // background:  url("assets/badmonkeynetwork/gif/null.gif") no-repeat center !important;
+    width:40vw;
+    height:40vh;
+    background: transparent !important;
+    box-shadow: none !important;
+    --spinner-color: #2c2c2c;
+    color: #0f0f0f;      
+
+  }
+}
+
+//loadingdelmono

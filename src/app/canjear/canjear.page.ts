@@ -45,14 +45,14 @@ export class CanjearPage implements OnInit {
         console.log(' respuesta monkeyusersupdateporid PERO EN VISTA Alogear ',res);
           localStorage.setItem('profileInfo', this.encrypt(JSON.stringify(res)));
           if(res.tipo_cuenta<1){
-            this.router.navigate(['login']);
+            this.varios.SacarAlLogin();
           }
         });
 
 
     }
     else{
-       this.router.navigate(['login']);
+       this.varios.SacarAlLogin();
     }
 
 

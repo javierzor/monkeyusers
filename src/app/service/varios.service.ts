@@ -22,6 +22,7 @@ export class VariosService {
 
   ir_a_registro: string='registro';
   profileInfo: any;
+  loadingmono: HTMLIonLoadingElement;
   constructor(
     private router: Router,
     public toastController: ToastController,
@@ -103,6 +104,11 @@ export class VariosService {
 }
 
 logout(){
+  history.pushState(null, document.title, location.href);
+  window.addEventListener('popstate', function (event)
+  {
+    history.pushState(null, document.title, location.href);
+  });
   localStorage.clear();
   this.router.navigate(['login']);
 }
@@ -119,7 +125,57 @@ decrypt(textToDecrypt : string){
   }
 }
 
+async MostrarYOcultarAlertaMono(loadingodismiss) {
+  
+  if(loadingodismiss=='present'){
+    this.loadingmono = await this.loadingController.create({
+      duration: 10000,
+      message: '<ion-img src="assets/monkeyusers/gif/gif-bad-monkey-v2.gif" alt="loading..."></ion-img>',
+      cssClass: 'loading-del-mono',
+      spinner: null,
+    });
+    this.loadingmono.present();
+  }
+  else{
+    // loadingmono.present();
 
+    setTimeout(() => 
+    {
+      this.loadingmono.dismiss();
+      this.loadingmono=null;
+    },
+    500);
+
+
+  }
+
+}
+
+async MostrarYOcultarAlertaMono2segundos() {
+    this.loadingmono = await this.loadingController.create({
+      duration: 1500,
+      message: '<ion-img src="assets/monkeyusers/gif/gif-bad-monkey-v2.gif" alt="loading..."></ion-img>',
+      cssClass: 'loading-del-mono',
+      spinner: null,
+    });
+    this.loadingmono.present();
+}
+
+
+BorrarHistorialNoBackButtonWPAExploradoresBrowser(){
+  history.pushState(null, document.title, location.href);
+  window.addEventListener('popstate', function (event)
+  {
+    history.pushState(null, document.title, location.href);
+  });
+}
+
+SacarAlLogin(){
+  this.MostrarYOcultarAlertaMono2segundos();
+  this.BorrarHistorialNoBackButtonWPAExploradoresBrowser();
+  this.logout();
+  
+}
 
 
 }
