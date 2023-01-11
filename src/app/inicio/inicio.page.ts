@@ -13,7 +13,7 @@ export class InicioPage implements OnInit {
   profileInfo:any;
   puntos:any; 
   constructor(
-    private variosservicios: VariosService,
+    public varios: VariosService,
     private router: Router
   ) { }
 
@@ -22,21 +22,69 @@ export class InicioPage implements OnInit {
 
   ionViewWillEnter(){
     this.traerperfilenhome();
+    this.AlogearDiferenteTipoCuenta();
+
   }
+
+
+
+
+  AlogearDiferenteTipoCuenta(){
+    this.profileInfo=localStorage.getItem('profileInfo');
+  if(this.profileInfo){
+    this.profileInfo=this.decrypt(this.profileInfo);
+    this.profileInfo=JSON.parse(this.profileInfo);
+      if(this.profileInfo&&this.profileInfo.id)
+      console.log('profileInfo  PERO EN VISTA Alogear ',this.profileInfo);
+      var datamonkeyusersupdateporid = {
+        nombre_solicitud:'monkeyusersupdateporid',
+        id:this.profileInfo.id
+      }
+      this.varios.variasfunciones(datamonkeyusersupdateporid).subscribe(async( res: any ) =>{
+        console.log(' respuesta monkeyusersupdateporid PERO EN VISTA Alogear ',res);
+          localStorage.setItem('profileInfo', this.encrypt(JSON.stringify(res)));
+          if(res.tipo_cuenta<1){
+            this.router.navigate(['login']);
+          }
+        });
+
+
+    }
+    else{
+       this.router.navigate(['login']);
+    }
+
+
+
+}
+
+encrypt(value : string) : string{
+  if(value){
+    return CryptoJS.AES.encrypt(value, this.secretKey.trim()).toString();
+  }
+}
+
+decrypt(textToDecrypt : string){
+  if(textToDecrypt){
+    return CryptoJS.AES.decrypt(textToDecrypt, this.secretKey.trim()).toString(CryptoJS.enc.Utf8);
+  }
+}
+
+
 
 
   cerrarsesion(){
     localStorage.clear();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
 
   }
   
   iraverificarproducto(){
-    this.router.navigate(['/verificarproducto']);
+    this.router.navigate(['/users/verificarproducto']);
   }
 
   iracanjear(){
-    this.router.navigate(['/canjear']);
+    this.router.navigate(['/users/canjear']);
   }
 
 
@@ -48,7 +96,7 @@ export class InicioPage implements OnInit {
     this.profileInfo=JSON.parse(this.profileInfo);
     console.log('profileinfo en HOME',this.profileInfo);
     if(this.profileInfo.tipo_cuenta<1){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
 
     }
     this.consultarpuntos();
@@ -59,7 +107,7 @@ export class InicioPage implements OnInit {
       nombre_solicitud: 'monkeyuserstraermonkeycoinspuntosdeusuario',
       id_user:this.profileInfo.id
     }
-    this.variosservicios.variasfunciones(datamonkeyuserstraermonkeycoinspuntosdeusuario).subscribe(async( res: any ) =>{
+    this.varios.variasfunciones(datamonkeyuserstraermonkeycoinspuntosdeusuario).subscribe(async( res: any ) =>{
       console.log(' respuesta monkeyuserstraermonkeycoinspuntosdeusuario ',res);
       this.puntos=res;
     });
@@ -68,19 +116,7 @@ export class InicioPage implements OnInit {
   
 
 
-  encrypt(value : string) : string{
-    if(value){
-      return CryptoJS.AES.encrypt(value, this.secretKey.trim()).toString();
-    }
-  }
 
-  decrypt(textToDecrypt : string){
-    if(textToDecrypt){
-      return CryptoJS.AES.decrypt(textToDecrypt, this.secretKey.trim()).toString(CryptoJS.enc.Utf8);
-    }
-  }
-
-  
 
 
 }

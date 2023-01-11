@@ -35,7 +35,7 @@ ion-button {
 
 
   :root {
-    font-size:8vw;
+    // font-size:8vw;
     --ion-font-family: 'Poppins', sans-serif;
     
     /** primary **/
@@ -64,3 +64,17 @@ ion-button {
       color:#fbb000!important;
     }
     
+
+// empieza alerta cerrarsalir
+ion-alert.cerrarsalir-alert {
+  --backdrop-opacity: 0.7;
+}
+
+.cerrarsalir-alert .alert-button-group {
+  padding: 8px;
+}
+
+.ios .cerrarsalir-alert button.alert-button {
+  border: 0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)
+}
+// termina alerta cerrarsalir

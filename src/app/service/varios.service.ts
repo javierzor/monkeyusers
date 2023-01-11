@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastController, LoadingController, ModalController } from "@ionic/angular";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class VariosService {
   ir_a_registro: string='registro';
   profileInfo: any;
   constructor(
+    private router: Router,
     public toastController: ToastController,
     private loadingController: LoadingController,
     private http: HttpClient
@@ -32,7 +34,7 @@ export class VariosService {
 
   variasfunciones(data: any)
   {
-  var url = 'https://nube.gq/api/variasfunciones';
+  var url = 'https://equipojotamar.com/backend/public/api/variasfunciones';
   return this.http.post(url,data,
   {headers:new HttpHeaders({"Content-Type":'application/json'})});
   }
@@ -100,7 +102,10 @@ export class VariosService {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
 
-
+logout(){
+  localStorage.clear();
+  this.router.navigate(['login']);
+}
 
 encrypt(value : string) : string{
   if(value){

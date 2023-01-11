@@ -51,7 +51,7 @@ export class ConfirmesucorreoPage implements OnInit {
     this.profileInfo=JSON.parse(this.profileInfo);
     console.log('profileinfo',this.profileInfo);
     if(this.profileInfo.tipo_cuenta=='1'){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
 
     }
   }
@@ -116,7 +116,7 @@ export class ConfirmesucorreoPage implements OnInit {
         console.log(' respuesta monkeyusersupdateporid ',res);
           localStorage.setItem('profileInfo', this.encrypt(JSON.stringify(res)));
           this.varios.presentToast('Verificación Exitosa!');
-          this.router.navigate(['/inicio']);
+          this.router.navigate(['/users/inicio']);
         });
 
 

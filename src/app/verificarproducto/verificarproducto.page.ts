@@ -211,7 +211,7 @@ export class VerificarproductoPage implements OnInit {
 }
 
   irainicio(){
-    this.router.navigate(['/inicio']);
+    this.router.navigate(['/users/inicio']);
   }
 
 
