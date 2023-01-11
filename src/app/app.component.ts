@@ -30,6 +30,9 @@ export class AppComponent {
 
 ionViewWillEnter(){
 
+      this.ActivarObservableDeBotonAtras();
+
+
   this.profileInfo=localStorage.getItem('profileInfo');
   if(this.profileInfo){
     this.profileInfo=this.decrypt(this.profileInfo);
